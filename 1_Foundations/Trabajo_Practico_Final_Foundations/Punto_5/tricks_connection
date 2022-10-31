@@ -1,0 +1,6 @@
+# How to connect to jupyter:
+http://127.0.0.1:8888/lab?token=jupyter_token
+
+
+# How to connect to SQL:
+%sql postgresql://postgres:postgres@app-postgres-db:5432/amir_deals

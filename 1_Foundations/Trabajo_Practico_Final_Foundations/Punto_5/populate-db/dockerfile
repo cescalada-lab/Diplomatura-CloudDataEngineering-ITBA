@@ -1,0 +1,16 @@
+# Dockerfile populate-db - Punto-5
+
+FROM python:3
+
+WORKDIR /app
+
+ADD requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
+COPY populate.py populate.py
+
+CMD ["python", "populate.py"]
+
+
+
