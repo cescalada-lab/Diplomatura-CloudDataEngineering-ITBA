@@ -13,7 +13,7 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER"  <<-EOSQL
     DROP TABLE IF EXISTS amir_deals;
 
     CREATE TABLE IF NOT EXISTS amir_deals(
-	    id		    INTEGER,
+	    id		INTEGER PRIMARY KEY,
 	    product     TEXT,
 	    client      TEXT,
 	    status      TEXT,
