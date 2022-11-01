@@ -1,7 +1,11 @@
 # Documentación:
 
 ## Dataset:
-* Se eligió un Dataset llamado **Amir_Deals**, un dataset que describe las compras - ventas, ganancias - pérdidas, clientes Nuevos - Viejos, con los que negocia la empresa, mas detalle se encuentra en el Readme.md escrito en el Ejercicio: 1.
+* Se eligió un Dataset llamado **Amir_Deals**, un dataset que describe las _compras-ventas, ganancias-pérdidas, clientes: Nuevos-Viejos_, con los que negocia la empresa, mas detalle se encuentra en el [Readme.md](https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Punto_1/Readme.md) escrito en el **Ejercicio: 1**.
+
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/dataset.png" />
+</p>
 
 ## Tecnologías:
 Las tecnologías usadas para realizar el pipeline en este TP son:
@@ -28,7 +32,7 @@ Estas imagenes fueron hechas con docker por mi para cargar las tablas y para hac
 Se uso un scrip de bash para crear la base de datos y las tablas a utilizar.
 * init.sh.
 
-## Expliación el Pipeline:
+## Expliación del Pipeline:
 
 Armar el archivo docker-compose.yml
 * El objetivo de este archivo es crear el pipeline para que orqueste la correcta ejecución de todos los contenedores usados para poder realizar las consultas de negocio pedidas en este TP.
@@ -90,13 +94,13 @@ volumes:
 **app-postgres-db:**
 * Se arma dentro de `services`, todo el pipeline de containers a ejecutar, nosotros creamos el servicio `app-postgres-db` cuyo objetivo es levantar un sistema operativo `linux alpine` que viene ya instalado con `postgresql`, configuramos un enviroment, pasandole un nombre de usuario y una contraseña.
 con respecto a `volumes`, configuramos un lugar para guardar la información de postgresql de la imagen del contenedor a una carpeta local, o sea lo que está en el directorio `/var/lib/postgresql/data` de `postgres:14.5-alpine`, se va a guardar en la carpeta local `postgres-db`, además vamos a copiar el script `init.sh` local hacia el directorio de la imagen `/docker-entrypoint-initdb.d/`, este script es importante ya que va a crear la database y las tablas en la imagen de postgres.
-Por último exponemos el `puerto 5432` que es el de postgre, lo 5455:5432, significa que el puerto 5432 de la imagen de postgres va a ser igual al 5455 de mi puerto local, esto lo elegi así por que yo al tener instalado postgres en mi computadora local, el puerto 5432 ya estaba ocupado, por lo que tenía que ocupar otro puerto local.
+Por último exponemos el `puerto 5432` que es el de postgres, lo 5455:5432, significa que el puerto 5432 de la imagen de postgres va a ser igual al 5455 de mi puerto local, esto lo elegí así por que yo al tener instalado postgres en mi computadora local, el puerto 5432 ya estaba ocupado, por lo que tenía que ocupar otro puerto local.
 
 **adminer:**
 * `adminer:latest` es un contenedor que tiene instalado y configurado adminer, una herramienta para administrar contenido en bases de datos, que expone el `puerto 8080`, con esta herramienta vamos a verificar si el script `init.sh` pudo crear con éxito la **base de datos** y las **tablas**.
 
 **populate-db:**
-* Es una imagen creada manualmente mediante un `dockerfile`, donde pedimos que levante una imagen de `python`, e instale mediante un `requirement.txt` ciertas librerias para ejecutar scripts de SQL.
+* Es una imagen creada manualmente mediante un `dockerfile`, donde pedimos que levante una imagen de `python`, e instale mediante un `requirement.txt` ciertas librerías para ejecutar scripts de SQL.
 Además vamos a copiar de nuestro file local a esta imagen el archivo `populate-db.py`, una vez copiado vamos a ejecutar abrir python y vamos a ejecutar `populate-db.py`. con este script vamos a crear la **base de datos** y vamos a crear las **tablas** para que el servicio **app-postgres-db** las pueda usar.
 
 ````
@@ -126,36 +130,72 @@ RUN pip install -r requirements.txt
 ````
 
 ## Guía de Ejecución:
-* ir al directorio donde se ubica el archivo `docker-comporse.yml`
+* Ir al directorio donde se ubica el archivo `docker-comporse.yml`
 
 ````
 $ cd /home/chris/Documentos/Punto_5
 ````
+* Podemos hacer `$ tree` y ver el directorio en forma de árbol:
 
-* ejecutar:
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/Imagen_tree.png" />
+</p>
+
+
+* Ejecutar:
 
 ````
 $ docker compose up
 ````
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/docker_compose_up.png" />
+</p>
 
 * Esperar hasta que se termine de ejecutar, una vez que se termine de ejecutar docker, podemos revisar si las tablas fueron creada con adminer.
-Ir al browser y escribir:
+
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/popular-db.png" />
+</p>
+
+* Ir al browser y escribir:
 
 ````
 http://localhost:8080
 ````
-* probamos haciendo alguna consulta rápida para ver si todo funciona.
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/adminer.png" />
+</p>
 
-* Cuando se terminé de cargar jupyter notebook, ir al browser y escribir:
+* Probamos haciendo alguna consulta rápida para ver si todo funciona.
+
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/probamos_tablas.png" />
+</p>
+
+* Cuando se terminé de cargar jupyter notebook:
+
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/jupyter-notebook.png" />
+</p>
+
+* Ir al browser y escribir:
 
 ````
 http://127.0.0.1:8888/lab?token=jupyter_token
 ````
+
 * Ahora cargar librerias, conectarse al host:app-postgres-db a traves del puerto:5432, y escribir clave y contraseña establecidos en nuestro docker-compose.yml.
 
 ````
 %sql postgresql://postgres:postgres@app-postgres-db:5432/amir_deals
 ````
+<p align="center">
+   <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/probamos_jupyter-nb.png" />
+</p>
 
+Con esto ya tenemos nuestro pipeline totalmente armado, además de poder hacer todo tipo de consultas en nuestra nueva base de datos postgres.
+
+
+# Muchas Gracias.
 
 
