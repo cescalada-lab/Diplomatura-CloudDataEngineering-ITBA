@@ -162,11 +162,13 @@ $ docker compose up
 ````
 http://localhost:8080
 ````
+* Va a aparecer en pantalla para loguearnos en Adminer:
+
 <p align="center">
    <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/adminer.png" />
 </p>
 
-* Probamos haciendo alguna consulta rápida para ver si todo funciona.
+* Una vez logueados, probamos haciendo alguna consulta rápida para ver si todo funciona.
 
 <p align="center">
    <img src="https://github.com/cescalada-lab/Diplomatura-CloudDataEngineering-ITBA/blob/main/1_Foundations/Trabajo_Practico_Final_Foundations/Documentacion/Imagenes/probamos_tablas.png" />
