@@ -6,12 +6,20 @@ Crear un Pull Request con un archivo en formato **markdown** expliando el **data
 
 ### _Respuesta 1:_
 * El Dataset elegido es un dataset llamado **Amid_Deals.csv**, es un dataset obtenido de un curso de Datacamp y que además está en una competencia de Kaggle. Este dataset tiene 6 columnas: **id, product, client, status, amount, num_users**.
-    * id [integer]: Es la Primary Key.
-    * product [text]: Son los distintos tipos de productos que vende amid.
-    * client [text]: Indica si son Clientes Corrientes o Clientes Nuevos.
-    * status [text]: Indica si amid ganó o perdió dinero.
-    * amount [DECIMAL(8,2)]: Muestra la cantidad de dinero que ganó amid.
-    * num_users [integer]: Indica la cantidad de clientes que compraron un producto en una transacción.
+
+### Tabla:
+
+|Nombre     |Tipo         |Descripción|
+|-----------|:-----------:|-----------|
+|id         |integer      |Es la Primary Key.|
+|product    |text         |Son los distintos tipos de productos que vende amid.|
+|client     |text         |Indica si son Clientes Corrientes o Clientes Nuevos.|
+|status     |text         |Indica si amid ganó o perdió dinero.|
+|amount     |DECIMAL(8,2) |Muestra la cantidad de dinero que ganó amid.|
+|num_users  |integer      |Indica la cantidad de clientes que compraron un producto en una transacción.|
+    
+### Consultas:
+
 * Las preguntas de negocio que se podrían responder con lenguaje SQL son:
 
  1. ¿Cuántos clientes habituales tiene? y ¿Cuántos clientes nuevos tiene?.
